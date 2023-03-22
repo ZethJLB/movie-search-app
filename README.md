@@ -21,15 +21,15 @@
 
 <h2>Clone the repository:</h2>
 
-<h3><code>git clone https://github.com/ZethJLB/movie-search-app.git</code></h3>
+<h4><code>git clone https://github.com/ZethJLB/movie-search-app.git</code></h4>
 
 <h3>Change directory to the project folder:</h3>
 
-<h3><code>cd movie-search-website</code></h3>
+<h4><code>cd movie-search-website</code></h4>
 
 <h3>Install the required dependencies:</h3>
 
-<h3><code>npm install</code></h3>
+<h4><code>npm install</code></h4>
 
 <h3>Update the MongoDB connection string in the express file with your own credentials.</h3>
 
@@ -37,9 +37,9 @@
 
 <h3>Start the server:</h3>
 
-<h3><code>npm start</code></h3>
+<h4><code>npm start</code></h4>
 or
-<h3><code>nodemon index.js</code></h3>
+<h4><code>nodemon index.js</code></h4>
 
 <h3>Open your browser and navigate to http://localhost:5003.</h3>
 

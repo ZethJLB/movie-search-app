@@ -1,0 +1,34 @@
+
+<% movies.forEach((movie) => { %>
+  <!-- Loop through the list of movies -->
+  <div class="card text-white bg-dark mb-3"></div>
+    <div class="card-header text-white bg-dark mb-3"><%= movie.title %></div>
+    <!-- Movie title -->
+    <div class="card-body">
+    <p class="card-text"><%= movie.plot %></p>
+    <!-- Movie plot summary -->
+    <ul class="card-text">
+      <% movie.genres.forEach((genre) => { %>
+      <!-- Loop through the movie's genres -->
+      <li class="card-text"><%= genre %></li>
+      <!-- Display each genre in a list item -->
+      <% }) %>
+    </ul>
+    <p class="card-text">Runtime: <%= movie.runtime %> minutes</p>
+    <!-- Movie runtime in minutes -->
+    <p class="card-text">Rated: <%= movie.rated %></p>
+    <!-- Movie rating -->
+    <% if (movie.released) { %>
+    <!-- Check if the movie's release date is defined -->
+    <p class="card-text">Released: <%= movie.released.toDateString() %></p>
+    <!-- Movie release date -->
+    <% } %>
+    <p class="card-text">Countries: <%= movie.countries.join(', ') %></p>
+    <!-- List of countries where the movie was produced -->
+    <% }) %>
+    </div>
+  </div>
+  <button class="btn btn-secondary" onclick="loadMoreMovies()">Load More</button>
+  <p>
+    (Scroll down)
+  </p>

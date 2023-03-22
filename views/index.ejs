@@ -1,28 +1,115 @@
-<!-- index.ejs -->
-
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="utf-8">
-  <title>Movies</title>
-  <link rel="stylesheet" href="styles.css"> <!-- Link to external CSS file -->
-</head>
-<body>
-  <h1>Movies</h1> <!-- Heading for the page -->
-  <% movies.forEach((movie) => { %> <!-- Loop through the list of movies -->
-    <h2><%= movie.title %></h2> <!-- Movie title -->
-    <p><%= movie.plot %></p> <!-- Movie plot summary -->
-    <ul>
-      <% movie.genres.forEach((genre) => { %> <!-- Loop through the movie's genres -->
-        <li><%= genre %></li> <!-- Display each genre in a list item -->
-      <% }) %>
-    </ul>
-    <p>Runtime: <%= movie.runtime %> minutes</p> <!-- Movie runtime in minutes -->
-    <p>Rated: <%= movie.rated %></p> <!-- Movie rating -->
-    <% if (movie.released) { %> <!-- Check if the movie's release date is defined -->
-      <p>Released: <%= movie.released.toDateString() %></p> <!-- Movie release date -->
-    <% } %>
-    <p>Countries: <%= movie.countries.join(', ') %></p> <!-- List of countries where the movie was produced -->
-  <% }) %>
-</body>
+  <head>
+    <meta charset="utf-8" />
+    <title>Movies</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+      integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N"
+      crossorigin="anonymous"
+    />
+    <!-- Link to external CSS file -->
+  </head>
+  <body>
+    <!-- Heading for the page -->
+    <div class="p-3 mb-2 bg-dark text-dark">
+      <img class=" mx-auto d-block rounded float-left" width='200' height='100' src="https://images.unsplash.com/photo-1478720568477-152d9b164e26?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OXx8bW92aWV8ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=60"/>
+      <img class=" mx-auto d-block rounded float-right" width='200' height='100' src="https://images.unsplash.com/photo-1478720568477-152d9b164e26?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OXx8bW92aWV8ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=60"/>
+    </div>
+    <div class="container-fluid movie-list">
+      <nav
+        class="navbar sticky-top navbar-dark bg-dark justify-content-between"
+      >
+        <h1 class="navbar-brand">Find A Movie!</h1>
+        <form class="form-inline" action="/" method="GET">
+          <input
+            class="form-control mr-sm-2"
+            type="text"
+            name="search"
+            placeholder="Search..."
+          />
+          <select
+            class="custom-select mr-sm-2"
+            id="inlineFormCustomSelect"
+            name="filter"
+          >
+            <option value="">Filter by...</option>
+            <option value="title">Title</option>
+            <option value="runtime">Runtime</option>
+            <option value="year">Year</option>
+            <option value="genres">Genre</option>
+          </select>
+          <select
+            class="custom-select mr-sm-2"
+            id="inlineFormCustomSelect"
+            name="category"
+          >
+            <option value="">Select category...</option>
+            <% categories.forEach((category) => { %>
+            <option value="<%= category %>"><%= category %></option>
+            <% }) %>
+          </select>
+          <button class="btn btn-primary" type="submit">Search</button>
+        </form>
+      </nav>
+      <input type="hidden" name="page" value="1" />
+    <% if (showResults) { %> <% movies.forEach((movie) => { %>
+    <!-- Loop through the list of movies -->
+    <div class="card text-white bg-dark mb-3">    </div>
+      <div class="card-header text-white bg-dark mb-3"><%= movie.title %></div>
+      <!-- Movie title -->
+      <div class="card-body">
+      <p class="card-text"><%= movie.plot %></p>
+      <!-- Movie plot summary -->
+      <ul class="card-text">
+        <% movie.genres.forEach((genre) => { %>
+        <!-- Loop through the movie's genres -->
+        <li class="card-text"><%= genre %></li>
+        <!-- Display each genre in a list item -->
+        <% }) %>
+      </ul>
+      <p class="card-text">Runtime: <%= movie.runtime %> minutes</p>
+      <!-- Movie runtime in minutes -->
+      <p class="card-text">Rated: <%= movie.rated %></p>
+      <!-- Movie rating -->
+      <% if (movie.released) { %>
+      <!-- Check if the movie's release date is defined -->
+      <p class="card-text">Released: <%= movie.released.toDateString() %></p>
+      <!-- Movie release date -->
+      <% } %>
+      <p class="card-text">Countries: <%= movie.countries.join(', ') %></p>
+      <!-- List of countries where the movie was produced -->
+      <% }) %> <%} %>
+      </div>
+    </div>
+  </div>
+
+    <!-- Script to load more movies using fetch API -->
+    <script>
+      let currentPage = 1;
+
+      async function loadMoreMovies() {
+        currentPage += 1;
+        // Get the search, filter, and category values from the server-rendered EJS template
+        const search = "<%= search %>";
+        const filter = "<%= filter %>";
+        const category = "<%= selectedCategory %>";
+        // Fetch new movies from the server based on the search, filter, category, and current page
+
+        const response = await fetch(
+          `/load-more?search=${search}&filter=${filter}&category=${category}&page=${currentPage}`
+        );
+        const newMovies = await response.text();
+        // Insert the fetched movies at the end of the existing movie list
+        document
+          .querySelector(".movie-list")
+          .insertAdjacentHTML("beforeend", newMovies);
+      }
+    </script>
+  <button class="btn btn-secondary" onclick="loadMoreMovies()">Load More</button>
+  <p>
+    (Scroll down)
+  </p>
+  </body>
 </html>

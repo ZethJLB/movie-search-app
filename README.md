@@ -21,7 +21,7 @@
 
 <h2>Clone the repository:</h2>
 
-<h3><code>git clone https://github.com/yourusername/movie-search-website.git</code></h3>
+<h3><code>git clone https://github.com/ZethJLB/movie-search-website.git</code></h3>
 
 <h3>Change directory to the project folder:</h3>
 

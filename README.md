@@ -35,6 +35,8 @@ Usage
 Start the server:
 
 --npm start
+or
+--nodemon index.js
 
 Open your browser and navigate to http://localhost:5003.
 

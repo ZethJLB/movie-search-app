@@ -3,30 +3,32 @@
 This repository contains the source code for a movie search website built using Node.js, Express.js, EJS, and MongoDB. Users can search for movies based on specific criteria such as title, runtime, year, and genre. The website also supports pagination to load additional results.
 
 <h2>Table of Contents</h2>
-
-Features
-Installation
-Usage
-File Structure
-Features
-
-Search movies by title, runtime, year, and genre
-Filter by category
-Pagination to load more results
-Responsive design using Bootstrap
-Installation
+<ol>
+<li>Features</li>
+<li>Installation</li>
+<li>Usage</li>
+<li>File Structure</li>
+<li>Features</li>
+</ol>
+<ul>
+<li>Search movies by title, runtime, year, and genre</li>
+<li>Filter by category</li>
+<li>Pagination to load more results</li>
+<li>Responsive design using Bootstrap</li>
+<li>Installation</li>
+</ul>
 
 <h2>Clone the repository:</h2>
 
-<code>--git clone https://github.com/yourusername/movie-search-website.git</code>
+<h1><code>git clone https://github.com/yourusername/movie-search-website.git</code></h1>
 
 <h3>Change directory to the project folder:</h3>
 
-<code>--cd movie-search-website</code>
+<h1><code>cd movie-search-website</code></h1>
 
 <h3>Install the required dependencies:</h3>
 
-<code>--npm install</code>
+<h1><code>npm install</code></h1>
 
 <h3>Update the MongoDB connection string in the express file with your own credentials.</h3>
 
@@ -34,9 +36,9 @@ Installation
 
 <h3>Start the server:</h3>
 
-<code>--npm start</code>
+<h1><code>npm start</code></h1>
 or
-<code>--nodemon index.js</code>
+<h1><code>nodemon index.js</code></h1>
 
 <h3>Open your browser and navigate to http://localhost:5003.</h3>
 

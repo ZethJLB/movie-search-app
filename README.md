@@ -8,7 +8,7 @@ This repository contains the source code for a movie search website built using 
 <li>Installation</li>
 <li>Usage</li>
 <li>File Structure</li>
-<li>Features</li>
+<li>Features:</li>
 </ol>
 <ul>
 <li>Search movies by title, runtime, year, and genre</li>
@@ -20,15 +20,15 @@ This repository contains the source code for a movie search website built using 
 
 <h2>Clone the repository:</h2>
 
-<h1><code>git clone https://github.com/yourusername/movie-search-website.git</code></h1>
+<h3><code>git clone https://github.com/yourusername/movie-search-website.git</code></h3>
 
 <h3>Change directory to the project folder:</h3>
 
-<h1><code>cd movie-search-website</code></h1>
+<h3><code>cd movie-search-website</code></h3>
 
 <h3>Install the required dependencies:</h3>
 
-<h1><code>npm install</code></h1>
+<h3><code>npm install</code></h3>
 
 <h3>Update the MongoDB connection string in the express file with your own credentials.</h3>
 
@@ -36,9 +36,9 @@ This repository contains the source code for a movie search website built using 
 
 <h3>Start the server:</h3>
 
-<h1><code>npm start</code></h1>
+<h3><code>npm start</code></h3>
 or
-<h1><code>nodemon index.js</code></h1>
+<h3><code>nodemon index.js</code></h3>
 
 <h3>Open your browser and navigate to http://localhost:5003.</h3>
 
